@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.text{
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.info-container{
+    margin-top: 20px;
+    color: #008ca8;
+}

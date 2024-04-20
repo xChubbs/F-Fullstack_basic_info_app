@@ -1,3 +1,7 @@
+.inputs{
+    align-self: center;
+}
+
 .container{
     display: flex;
     flex-direction: column;
@@ -9,8 +13,6 @@
     background: #FFF;
     border-radius: 20px;
     padding-bottom: 30px;
-    align-self: center;
-    align-items: center;
 }
 
 .header{
@@ -29,13 +31,10 @@
 }
 
 .underline{
-    width: 80px;
+    width: 100px;
     height: 5px;
     background: #039CBA;
     border-radius: 9px;
-}
-.inputs{
-    align-self: center;
 }
 
 .submit-container{
@@ -45,26 +44,11 @@
     margin: 60 px auto;
 }
 
-.forgot-password-container{
+.forgot-password{
     align-self: center;
     margin-top: 20px;
     color: #005f6f;
     font-size: 15px;
+
     cursor:pointer;
-}
-
-.forgot-password{
-    text-decoration: none;
-}
-
-.copyright-container{
-    align-self: center;
-    margin-top: 20px;
-    font-size: 15px;
-    font-weight: 100;
-    color: #000;
-}
-
-.git-link{
-    text-decoration: none;
 }
