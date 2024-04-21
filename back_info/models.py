@@ -10,13 +10,13 @@ class Transaction(Base):
 
     id = Column(Integer, primary_key=True, index=True)
 
-    username = Column(String)
+    Username = Column(String)
     password = Column(String)
 
-    first_name = Column(String)
-    last_name = Column(String)
+    FirstName = Column(String)
+    LastName = Column(String)
 
     email = Column(String)
-    position = Column(String)
-    skills = Column(String)
-    skill_grades = Column(String)
+    Position = Column(String)
+    SkillSet = Column(String)
+    SkillGrade = Column(String)

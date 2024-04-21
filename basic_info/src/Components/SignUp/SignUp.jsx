@@ -64,7 +64,7 @@ const SignUp = () => {
 
     const handleInputChange = (event) => {
         setFormData({
-            ...formData, [event.target.name] : event.target.value,
+            ...formData, [event.target.id] : event.target.value,
         });
 
     };
