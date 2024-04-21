@@ -8,7 +8,6 @@ import SignUp from './Components/SignUp/SignUp';
 import NoAccess from './Components/404/NoAccess';
 import Profile from './Components/Profile/Profile';
 
-
 const App = () => {
 
   return (
