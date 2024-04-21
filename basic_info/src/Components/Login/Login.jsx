@@ -69,7 +69,10 @@ const Login = () => {
             validPass = user["password"] === formData.password;
 
             // Finally it's sent to the Profile if applied
-            if(validUser && validPass){current_id = id}
+            if(validUser && validPass){
+                current_id = id;
+                break;
+            }
         }
 
         if(validUser && validPass){
