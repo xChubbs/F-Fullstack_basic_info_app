@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
+import api from '../../Api'
 
 // Importing of CSS for Login
 import './Login.css'
@@ -30,6 +32,48 @@ const SignUpButton = styled(Button)(({ theme }) => ({
 
 const Login = () => {
 
+    // Backend Handling
+    const [users, setUsers] = useState([]);
+    const [formData, setFormData] = useState({
+        Username: '',
+        password: ''
+    });
+
+    const validateUserRegistration = async () => {
+        const response = await api.get('/users/')
+        setUsers(response.data)
+    };
+
+    useEffect(() => {validateUserRegistration();}, []);
+
+    const handleInputChange = (event) => {
+        setFormData({
+            ...formData, [event.target.id] : event.target.value,
+        });
+    };
+
+    const handleUserLogIn = async (event) => {
+        event.preventDefault();
+        await api.get('/users/', users);
+        
+        // Cycle over all users
+        for (const id in users){
+            // Validation of identity
+            const user = users[id]
+            const validUser = user["Username"] === formData.Username;
+            const validPass = user["password"] === formData.password;
+
+            // Finally it's sent to the Profile if applied
+            if(validUser && validPass){navigate("/Profile")}
+        }
+
+        // Refresh of inputs
+        setFormData({
+            Username: '',
+            password: ''
+        });
+    };
+
     // Navegation Control
     const navigate = useNavigate();
 
@@ -46,12 +90,12 @@ const Login = () => {
             <div className='inputs'>
                 <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
                     <PermIdentityIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                    <TextField id="Username" label="Username" variant="standard" />
+                    <TextField id="Username" label="Username" variant="standard" onChange={handleInputChange} value={formData.Username}/>
                 </Box>
 
                 <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
                     <HttpsOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                    <TextField id="password" label="Password" variant="standard" />
+                    <TextField id="password" label="Password" variant="standard" onChange={handleInputChange} value={formData.password}/>
                 </Box>
             </div>
 
@@ -60,7 +104,7 @@ const Login = () => {
                     Sign Up
                 </LogInButton>
 
-                <SignUpButton variant="filled">
+                <SignUpButton variant="filled" onClick={handleUserLogIn}>
                     Log in
                 </SignUpButton>
             </div>

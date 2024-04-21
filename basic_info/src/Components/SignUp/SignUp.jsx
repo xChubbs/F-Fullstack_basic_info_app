@@ -66,7 +66,6 @@ const SignUp = () => {
         setFormData({
             ...formData, [event.target.id] : event.target.value,
         });
-
     };
 
     const handleUserRegistration = async (event) => {
@@ -82,6 +81,9 @@ const SignUp = () => {
             SkillGrade: '',
             password: ''
         });
+
+        // Finally it's sent to the sign in page
+        navigate("/SignIn")
     };
 
     // Navegation Control
@@ -141,7 +143,7 @@ const SignUp = () => {
 
             <div className='submit-container'>
                 <div className='submit-container'>
-                    <LogInButton onClick={() => navigate("/")} variant="outlined">
+                    <LogInButton onClick={() => navigate("/SignIn")} variant="outlined">
                         Sign in
                     </LogInButton>
 
