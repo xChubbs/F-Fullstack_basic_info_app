@@ -14,9 +14,8 @@ import { useNavigate } from 'react-router-dom'
 // Import of Material UI components
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
+let radarChart;
 
 const Profile = () => {
 
@@ -41,7 +40,6 @@ const Profile = () => {
 
     // Definition of user
     const user = users[current_id]
-    console.log(typeof (user) === typeof (undefined))
 
     /* ---------------------- Elements definitions ---------------------- */
     var user_pfp; var name; var username; var email;
@@ -69,7 +67,39 @@ const Profile = () => {
         position = user.Position;
         skills = user.SkillSet.match(/[A-Za-z]+/g);
         skill_grades = user.SkillGrade.match(/[0-9]+.[0-9]+/g);
+
+        // Preparation of chart values
+        var data = {
+            labels: skills,
+            datasets: [{
+                label: username, 
+                data: skill_grades,
+                fill: true,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }]
+        };
+
+        var config = {
+            type: 'radar',
+            data: data,
+            options: { elements:{ line: {borderWidth: 2}} }
+        };
+
+        var radarCanvas = document.getElementById("radarChart");
+
+        if (radarChart) {
+            radarChart.destroy();
+        }
+
+        radarChart = new Chart(radarCanvas, config);
     };
+
+    
 
     // Response page for user
     return (
@@ -81,7 +111,7 @@ const Profile = () => {
             </div>
 
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
-                <Avatar sx={{ width: 50, height: 50, margin: 1 }}>{user_pfp}</Avatar>
+                <Avatar sx={{ width: 60, height: 60, margin: 1 }}>{user_pfp}</Avatar>
                 <div className='subheader'>
                     <div className='text-name'>{name}</div>
                 </div>
@@ -107,7 +137,7 @@ const Profile = () => {
             </Box >
 
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-                <div className='text-position'>{position}</div>
+                <canvas id="radarChart" width="340" height="340"></canvas>
             </Box >
 
         </div>
