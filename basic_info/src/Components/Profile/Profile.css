@@ -4,6 +4,13 @@
     align-self: center;
 }
 
+.underline-content{
+    width: 500px;
+    height: 3px;
+    background: #065f71;
+    border-radius: 10px;
+}
+
 .header{
     display: flex;
     flex-direction: column;
@@ -23,13 +30,34 @@
 }
 
 .text-name{
-    color: #788082;
+    color: #787879;
     font-size: 36px;
     font-weight: 700;
 }
 
 .text-description{
-    color: #2f2f2f;
+    color: #908e8e;
+    font-size: 26px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.text-username{
+    color: #959595;
     font-size: 20px;
     font-weight: 400;
+    font-style: normal;
+}
+
+.text-position{
+    color: #2d2d2d;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.tex-scheme{
+    color: #117480;
+    font-size: 36px;
+    font-weight: 700;
 }
