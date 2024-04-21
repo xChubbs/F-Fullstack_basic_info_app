@@ -14,6 +14,8 @@ import { useNavigate } from 'react-router-dom'
 // Import of Material UI components
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 let radarChart;
 
@@ -36,7 +38,9 @@ const Profile = () => {
         }
     };
 
-    useEffect(() => { validateUserEntry(); }, []);
+    useEffect(() => { validateUserEntry(); 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // Definition of user
     const user = users[current_id]
@@ -99,8 +103,6 @@ const Profile = () => {
         radarChart = new Chart(radarCanvas, config);
     };
 
-    
-
     // Response page for user
     return (
 
@@ -139,6 +141,13 @@ const Profile = () => {
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
                 <canvas id="radarChart" width="340" height="340"></canvas>
             </Box >
+
+            <div className='info-comeback'>
+                Let's get back Home whenever you ready!
+            </div>
+            <IconButton aria-label="home" size="small" onClick={() => navigate("/SignIn")}>
+                <FavoriteIcon fontSize="inherit" sx={{color:'#008ca8'}} />
+            </IconButton>
 
         </div>
     )

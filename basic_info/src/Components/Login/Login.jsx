@@ -7,7 +7,6 @@ import './Login.css'
 
 import { Link, useNavigate } from 'react-router-dom'
 
-
 // Import of Material UI components
 import { styled } from '@mui/material/styles';
 
@@ -58,8 +57,8 @@ const Login = () => {
         event.preventDefault();
         await api.get('/users/', users);
 
-        var validUser = new Boolean(false);
-        var validPass = new Boolean(false);
+        var validUser = false;
+        var validPass = false;
 
         // Cycle over all users
         for (const id in users){
@@ -108,7 +107,7 @@ const Login = () => {
 
                 <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
                     <HttpsOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                    <TextField id="password" label="Password" variant="standard" onChange={handleInputChange} value={formData.password}/>
+                    <TextField id="password" label="Password" variant="standard" type="password" onChange={handleInputChange} value={formData.password}/>
                 </Box>
             </div>
 
@@ -123,7 +122,7 @@ const Login = () => {
             </div>
 
             <div className='forgot-password-container'>
-                <Link to="/" className='forgot-password'><span>Did you forgot your password?</span></Link>
+                <Link to="/404" className='forgot-password'><span>Did you forgot your password?</span></Link>
             </div>
 
             <div className='copyright-container'>

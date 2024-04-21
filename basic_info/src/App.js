@@ -1,7 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import React, {useState, useEffect} from 'react'
-import api from './Api'
-
+import React from 'react'
 
 import './App.css';
 
@@ -9,8 +7,6 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import NoAccess from './Components/404/NoAccess';
 import Profile from './Components/Profile/Profile';
-
-
 
 
 const App = () => {

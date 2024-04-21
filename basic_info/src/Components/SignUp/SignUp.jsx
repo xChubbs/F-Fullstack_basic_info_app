@@ -42,7 +42,8 @@ const SignUpButton = styled(Button)(({ theme }) => ({
 
 const SignUp = () => {
 
-    // Backend Handling
+    /* - Backend Handling - */
+    // eslint-disable-next-line
     const [user, setUser] = useState([]);
     const [formData, setFormData] = useState({
         email: '',
@@ -60,7 +61,9 @@ const SignUp = () => {
         setUser(response.data)
     };
 
-    useEffect(() => {fetchUserRegistration();}, []);
+    useEffect(() => {fetchUserRegistration();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleInputChange = (event) => {
         setFormData({
@@ -137,7 +140,7 @@ const SignUp = () => {
 
                 <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
                     <HttpsOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                    <TextField id="password" name="password" label="Password" variant="standard" onChange={handleInputChange} value={formData.password}/>
+                    <TextField id="password" name="password" label="Password" variant="standard" type="password" onChange={handleInputChange} value={formData.password}/>
                 </Box>
             </div>
 
