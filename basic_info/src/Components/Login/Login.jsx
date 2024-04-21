@@ -30,6 +30,8 @@ const SignUpButton = styled(Button)(({ theme }) => ({
     '&:hover': { backgroundColor: '#039CBA', color: '#FFF' },
 }));
 
+var current_id = -1;
+
 const Login = () => {
 
     // Backend Handling
@@ -55,19 +57,27 @@ const Login = () => {
     const handleUserLogIn = async (event) => {
         event.preventDefault();
         await api.get('/users/', users);
-        
+
+        var validUser = new Boolean(false);
+        var validPass = new Boolean(false);
+
         // Cycle over all users
         for (const id in users){
             // Validation of identity
             const user = users[id]
-            const validUser = user["Username"] === formData.Username;
-            const validPass = user["password"] === formData.password;
+            validUser = user["Username"] === formData.Username;
+            validPass = user["password"] === formData.password;
 
             // Finally it's sent to the Profile if applied
-            if(validUser && validPass){navigate("/Profile")}
+            if(validUser && validPass){current_id = id}
         }
 
-        // Refresh of inputs
+        if(validUser && validPass){
+            // Validation and saving of the current profile ID
+            navigate("/Profile")
+        }
+
+        // In case of no validation refresh of login
         setFormData({
             Username: '',
             password: ''
@@ -119,5 +129,5 @@ const Login = () => {
         </div>
     )
 }
-
+export {current_id};
 export default Login
