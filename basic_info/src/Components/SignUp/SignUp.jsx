@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import api from '../../Api'
 
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -15,6 +16,10 @@ import TextField from '@mui/material/TextField';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+
+import RecentActorsIcon from '@mui/icons-material/RecentActors';
+import InsightsIcon from '@mui/icons-material/Insights';
+import AlignVerticalBottomIcon from '@mui/icons-material/AlignVerticalBottom';
 
 
 // Attributions of icons: 
@@ -37,6 +42,48 @@ const SignUpButton = styled(Button)(({ theme }) => ({
 
 const SignUp = () => {
 
+    // Backend Handling
+    const [user, setUser] = useState([]);
+    const [formData, setFormData] = useState({
+        email: '',
+        Username: '',
+        FirstName: '',
+        LastName: '',
+        Position: '',
+        SkillSet: '',
+        SkillGrade: '',
+        password: ''
+    });
+
+    const fetchUserRegistration = async () => {
+        const response = await api.get('/users/')
+        setUser(response.data)
+    };
+
+    useEffect(() => {fetchUserRegistration();}, []);
+
+    const handleInputChange = (event) => {
+        setFormData({
+            ...formData, [event.target.name] : event.target.value,
+        });
+
+    };
+
+    const handleUserRegistration = async (event) => {
+        event.preventDefault();
+        await api.post('/users/', formData);
+        setFormData({
+            email: '',
+            Username: '',
+            FirstName: '',
+            LastName: '',
+            Position: '',
+            SkillSet: '',
+            SkillGrade: '',
+            password: ''
+        });
+    };
+
     // Navegation Control
     const navigate = useNavigate();
 
@@ -53,20 +100,43 @@ const SignUp = () => {
             <div className='inputs'>
                 <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
                     <MailOutlineIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                    <TextField id="email" label="Email" variant="standard" />
+                    <TextField id="email" name="email" label="Email" variant="standard" onChange={handleInputChange} value={formData.email}/>
                 </Box>
 
                 <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
                     <PermIdentityIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                    <TextField id="Username" label="Username" variant="standard" />
+                    <TextField id="Username" name="Username" label="Username" variant="standard" onChange={handleInputChange} value={formData.Username}/>
+                </Box>
+
+                <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
+                    <PermIdentityIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    <TextField id="FirstName" name="FirstName" label="First Name" variant="standard" onChange={handleInputChange} value={formData.FirstName}/>
+                </Box>
+
+                <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
+                    <PermIdentityIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    <TextField id="LastName" name="LastName" label="Last Name" variant="standard" onChange={handleInputChange} value={formData.LastName}/>
+                </Box>
+
+                <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
+                    <RecentActorsIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    <TextField id="Position" name="Position" label="Current Position" variant="standard" onChange={handleInputChange} value={formData.Position}/>
+                </Box>
+
+                <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
+                    <InsightsIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    <TextField id="SkillSet" name="SkillSet" label="Skills: Enlist skill 1, skill 2, ..." variant="standard" onChange={handleInputChange} value={formData.SkillSet}/>
+                </Box>
+
+                <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
+                    <AlignVerticalBottomIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    <TextField id="SkillGrade" name="SkillGrade" label="Skills Grades: Enlist skill 1, skill 2, ..." variant="standard" onChange={handleInputChange} value={formData.SkillGrade}/>
                 </Box>
 
                 <Box sx={{ display: 'flex', alignItems: 'flex-end', my: 2 }}>
                     <HttpsOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                    <TextField id="password" label="Password" variant="standard" />
+                    <TextField id="password" name="password" label="Password" variant="standard" onChange={handleInputChange} value={formData.password}/>
                 </Box>
-
-
             </div>
 
             <div className='submit-container'>
@@ -75,7 +145,7 @@ const SignUp = () => {
                         Sign in
                     </LogInButton>
 
-                    <SignUpButton onClick={() => navigate("/SignUp")} variant="filled">
+                    <SignUpButton onClick={handleUserRegistration} variant="filled">
                         Register
                     </SignUpButton>
                 </div>

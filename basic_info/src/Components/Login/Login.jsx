@@ -60,7 +60,7 @@ const Login = () => {
                     Sign Up
                 </LogInButton>
 
-                <SignUpButton onClick={() => navigate("/SignUp")} variant="filled">
+                <SignUpButton variant="filled">
                     Log in
                 </SignUpButton>
             </div>
