@@ -13,12 +13,23 @@
     margin-top: 30px;
 }
 
-.text{
-    font-size: 48px;
+.subheader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.text-name{
+    color: #788082;
+    font-size: 36px;
     font-weight: 700;
 }
 
-.info-container{
-    margin-top: 20px;
-    color: #008ca8;
+.text-description{
+    color: #2f2f2f;
+    font-size: 20px;
+    font-weight: 400;
 }

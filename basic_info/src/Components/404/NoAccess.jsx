@@ -32,7 +32,7 @@ const NoAccess = () => {
                 Let's get you back home
             </div>
 
-            <IconButton aria-label="home" size="small" onClick={() => navigate("/")}>
+            <IconButton aria-label="home" size="small" onClick={() => navigate("/SignIn")}>
                 <FavoriteIcon fontSize="inherit" sx={{color:'#008ca8'}} />
             </IconButton>
 
