@@ -1,4 +1,4 @@
-# Fullstack. Implementation app
+# Fullstack: Implementation app
 The following repository contains the implementation of a basic fullstack application. It's based on React,
 FastAPI and SQLAlchemy.
 
@@ -49,15 +49,16 @@ typing-extensions==4.11.0
 uvicorn==0.29.0
 ```
 
-Knowing the limitations for certain cases a dockerized version was prepared, first you must have installed [Docker](https://www.docker.com) on your system *(I recommend usign Docker Desktop)*, And now to get the file needed you must run the following commands to build the composition, this process must be done once, whenever the image it's already build it's no needed to rebuilded again if no changes are made.
-
+Knowing the limitations for certain cases a dockerized version was prepared, if you are looking foward to build the image it's importat that you must have installed [Docker](https://www.docker.com) on your system *(I recommend usign Docker Desktop)*, And now to get the file needed you must run the following command to build the composition, this process must be done once, whenever the image it's already build it's no needed to rebuilded again if no changes are made, in a new terminal write:
 ````
 docker-compose up --build
 ````
+This command composes the two different directories with each Dockerfile created for the containers, this creates a multicontainer application that runs the containers simultaneously and let's the Front and Back communicate smoothly *(Like a complete local machine!)*, once the build it's done, the ending parameter `--build` it's no longer needeed. 
 
-This command composes the two different directories with each Dockerfile created for the containers, this creates a multicontainer application that runs the containers simultaneously and let's the Front and Back communicate smoothly *(Like a complete local machine!)*, once the build it's done, the ending parameter `--build` it's no longer needeed
+When the composition is run, the application it's going to be available on the port: 3000, this means that to see the app running you must connect to your [http://localhost:3000](http://localhost:3000/SignIn).
 
-### Work Flow. Public dev priorities
+### Work Flow
+#### Public dev priorities
 The following task were prioritized on the creation of the proyect
 - [x] Login page possible to be accessed to a Profile page with ability to change to a Sign in form
 - [x] Profile page with the information of the user accessed with comeback to Login page
@@ -66,3 +67,5 @@ The following task were prioritized on the creation of the proyect
 - [x] Profile page with a spyder graph containing the skills information
 - [x] Communication of Front and Backend for user requests
 - [x] Dockerize of solution for running/debbuging and consistent use
+- [ ] Explore the Docker Repository if it's possible to publish the image
+- [ ] Get some sleep after the proyect it's due *(In Progress...)*
