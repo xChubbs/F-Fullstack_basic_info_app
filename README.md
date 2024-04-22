@@ -64,8 +64,8 @@ When the composition is run, the application it's going to be available on the p
 ]
 ````
 And try to input your own!, the sign in form it's ready to post new entries. Just be careful with your entries because the app needs more further refinements and it's really sensitive with the information provided:
-- **username**/ **password**/ **First name**/ **Last name**/ **Current position**/ **Email** : Are inputs based on string with no support for special characters like accents: `á`, `ä`, `à`, ...
-- **Skill Set**/ **Skill Grades** : Are inputs based on string that are processed to then be enlisted, it's recomended to use commas to separate the values: *skill 1, skill 2, skill 3, ...*, and for the skill grades all the values input must be in a float format: *1.0, 2.8, 4.2, ...*
+- **username**/ **password**/ **First name**/ **Last name**/ **Current position**/ **Email** : Are inputs based on string with no support for special characters like accents: `á, ä, à, ...`
+- **Skill Set**/ **Skill Grades** : Are inputs based on string that are processed to then be enlisted, it's recomended to use commas to separate the values: `skill 1, skill 2, skill 3, ...`, and for the skill grades all the values input must be in a float format: `1.0, 2.8, 4.2, ...`
 
 ### Work Flow
 #### Public dev priorities
