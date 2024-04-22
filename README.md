@@ -1,74 +1,23 @@
-# F-Fullstack_basic_info_app
-(Fullstack test) Basic information app
-
 # Fullstack. Implementation app
 The following repository contains the implementation of a basic fullstack application. It's based on React,
 FastAPI and SQLAlchemy.
 
-## Flujo de trabajo
-Este repositorio se encuentra distribuido en cada una de las Branch presentes, y el flujo
-se indica a continuación:
+## About branching and context of the proyect
+Currently four branches exists: `main`, `front_develop`, `back_integration` and `Dockerization`. Resulting on the natural approach did to the proyect. All the information that can be found on each branc it's enlisted:
+- `main` : Final state of the application, here all the branches come together in a Fullstack perspective
+- `front_develop` : First task of creation of a React app, considering MUI components, complemented with CSS, JS and pure HTML for creation of cards containing all the information wanted 
+- `back_integration` : Second task of creation and preparing the React app for an integration of SQLite, using SQLAlchemy, FastAPI, uvcorn and pydantic.
+- `Dockerization` : Final task of deployment of application restructuring of proyect and final Docker of each end for final integration
 
-Las versiones finales de los archivos a emplear y calificar se ubican en el `main`, así las **branch** 
-quedan últimamente de trabajo y seguimiento continuo.
+### Running the application
 
-La carpeta `entregas` corresponde a las actividades las cuales no involucran un workspace, por otro lado
-`ALR-workspace` contiene las versiones finales de archivos correspondientes al workspace final
 
-### Classes
-> En la *branch* abarca toda la información relacionado al contenido y actividades que se desarrollan 
-> durante los espacios de clase.
->### Ejercicios de Clase
->> Se tiene encarpetadas cada una de las actividades realizadas en clases en formato XX, *por ejemplo 01*.
->> Los formatos que se encuentran en esta carpeta son:
->> - `.dig`
->> - `.c`
->> - `.h`
->### Registros de Clase
->> Se tiene encarpetadas cada una de los registros de clases en formato XX, *por ejemplo 01*.
->> Los formatos que se encuentran en esta carpeta son:
->> - `.pdf`
->### classes-workspace
->> Contiene el workspace empleado durante los espacios de clase, y archivos en contrucción para versiones
->> finales
-
-### Proyecto
-> En la *branch* proximamente se va a consignar toda la información relacionada al proyecto, y todas las
-> referencias que se van a emplear en el desarrollo del mismo.
->### Proyect Directive
->> Se tiene encarpetadas la directiva y lineas a seguir del proyecto, al igual que se nutre de información
->> adicional que es útil para la realización del mismo
->### proyecto-workspace
->> Contiene el workspace empleado para el desarrolo, avances relacionados al proyecto y archivos en contrucción
->> para versiones finales
-
-### Monitorias
-> En la *branch* se contiene toda la información relacionado al contenido y actividades que se desarrollan 
-> durante los espacios de Monitorias y Asesorias.
->### Talleres
->> Se tiene encarpetadas los registros de actividades realizadas por fuera de los workspace de trabajo
->### monitorias-workspace
->> Contiene el workspace empleado durante los espacios de monitorias, y archivos en contrucción para
->> versiones finales
-
-### Tareas
-> En la *branch* se abarca la información relacionado al desarrollo e implementación de las tareas.
->### XX
->> Se tiene encarpetadas los registros de tareas realizadas por fuera de los workspace de trabajo
->### tareas-workspace
->> Contiene el workspace empleado durante para el desarrollo de tareas, y archivos en contrucción
->> para versiones finales
-
-### Flow of work
+### Work Flow. Public dev priorities
 The following task were prioritized on the creation of the proyect
 - [x] Login page possible to be accessed to a Profile page with ability to change to a Sign in form
-- [x] 
-- [x] Inicialización de la información en `main`
-- [x] Depuración de archivos `DS_Store`
-- [x] Agregar extensión `.DS_Store` a `.gitignore`
-- [x] Actualización de la información de las *branch* en `README.md`
-- [x] Sincornización conjunta de archivos base en los workspace
-- [ ] Ordenamiento y entrega de archivos finales a `main`
-- [x] Realización Tarea 01
-- [x] Merge de la tarea para quedar en `main`
-- [ ] Revisión organización branch `classes`
+- [x] Profile page with the information of the user accessed with comeback to Login page
+- [x] Sign in form with information about: Name, email, company position, user/password
+- [x] Aditional information enlisting skill sets and grading those skills
+- [x] Profile page with a spyder graph containing the skills information
+- [x] Communication of Front and Backend for user requests
+- [x] Dockerize of solution for running/debbuging and consistent use
