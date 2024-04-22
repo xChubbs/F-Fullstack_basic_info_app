@@ -10,7 +10,52 @@ Currently four branches exists: `main`, `front_develop`, `back_integration` and 
 - `Dockerization` : Final task of deployment of application restructuring of proyect and final Docker of each end for final integration
 
 ### Running the application
+For running the application locally it's adviced that all the dependencies needed must be installed before running. You must have installed for the client end *(node:16-alpine)*:
+```
+dependencies: {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.8",
+    "chart.js": "^4.4.2",
+    "postcss": "^8.4.38",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+}
+```
+And must have installed for the server end *(python:3.90)*:
+```
+annotated-types==0.6.0
+anyio==4.3.0
+click==8.1.7
+exceptiongroup==1.2.1
+fastapi==0.110.2
+greenlet==3.0.3
+h11==0.14.0
+idna==3.7
+pydantic==2.7.0
+pydantic-core==2.18.1
+sniffio==1.3.1
+SQLAlchemy==2.0.29
+starlette==0.37.2
+typing-extensions==4.11.0
+uvicorn==0.29.0
+```
 
+Knowing the limitations for certain cases a dockerized version was prepared, first you must have installed [Docker](https://www.docker.com) on your system *(I recommend usign Docker Desktop)*, And now to get the file needed you must run the following commands to build the composition, this process must be done once, whenever the image it's already build it's no needed to rebuilded again if no changes are made.
+
+````
+docker-compose up --build
+````
+
+This command composes the two different directories with each Dockerfile created for the containers, this creates a multicontainer application that runs the containers simultaneously and let's the Front and Back communicate smoothly *(Like a complete local machine!)*, once the build it's done, the ending parameter `--build` it's no longer needeed
 
 ### Work Flow. Public dev priorities
 The following task were prioritized on the creation of the proyect
