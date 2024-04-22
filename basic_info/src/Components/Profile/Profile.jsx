@@ -1,15 +1,34 @@
+/* 
+ ****************************************************************
+ * about  : Profile app
+ * file   : Profile.jsx
+ * author : @alujan
+ * **************************************************************
+ * @information  
+ * Test Login Application
+ * Small implementation of a Fullstack app, based on REACT, 
+ * FastAPI & SQLAlchemy
+ * 
+ * **************************************************************
+ */
+
+// Import of main module REACT
 import React, { useState, useEffect } from 'react'
-import Chart from 'chart.js/auto';
 
-import api from '../../Api'
-
-import { current_id } from '../Login/Login.jsx'
-
-// Importing of CSS for No access
-import './Profile.css'
-
+// Import of Router for Front interconnections
 import { useNavigate } from 'react-router-dom'
 
+// Import of Chart handler for spyder chart
+import Chart from 'chart.js/auto';
+
+// Import of API for Backend interactions
+import api from '../../Api'
+
+// Import of current_id for auth validation
+import { current_id } from '../Login/Login.jsx'
+
+// Importing of CSS for Profile
+import './Profile.css'
 
 // Import of Material UI components
 import Box from '@mui/material/Box';
@@ -17,19 +36,22 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+// Global radarChart for refreshing
 let radarChart;
 
+// Profile: Profile definition of user validated, in case of unvalid
+// user it's redirected to /noAuth app (aka 404 bad gateaway)
 const Profile = () => {
 
-    // Navegation Control
-    const navigate = useNavigate();
+    /* -------------------------- Backend Handling -------------------------- */
 
-    // Backend Handling
+    // useStates for User information needed in the construction
     const [users, setUsers] = useState([]);
 
+    // Validate Entry function: Validation of a correct ID for construction
     const validateUserEntry = async () => {
 
-        // Validation of Valid entry
+        // Validation of Valid entry: current_id = -1 (Default case)
         if (current_id === -1) {
             navigate("/NoAuth")
         } else {
@@ -38,21 +60,22 @@ const Profile = () => {
         }
     };
 
+    // Validation and get of the database for construction
     useEffect(() => { validateUserEntry(); 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Definition of user
+    // Definition of user of interest
     const user = users[current_id]
 
-    /* ---------------------- Elements definitions ---------------------- */
+    /* -------------- User: elements definitions -------------- */
     var user_pfp; var name; var username; var email;
     var position; var skills; var skill_grades;
 
     // Default designation of values: Undefined state of answer
     if (typeof (user) === typeof (undefined)) {
 
-        // Dummy definitions
+        // Dummy definitions: Needed for rendering
         user_pfp = "Lorem Ipsum";
         name = "Lorem Ipsum";
         username = "Lorem Ipsum";
@@ -63,8 +86,15 @@ const Profile = () => {
 
     } else {
 
-        // User defined values:
-        user_pfp = user.FirstName[0] + user.LastName[0];    // Initials of Name
+        // User defined values: user selected from DB
+        // - user_pfp    : Initials of First and Last name
+        // - name        : String concat of First and Last name
+        // - username    : Same as defined in signup
+        // - email       : Same as defined in signup
+        // - position    : Inned Position defined in signup
+        // - skills      : List of extracted skills
+        // - skill grades: List of corresponding grades
+        user_pfp = user.FirstName[0] + user.LastName[0];
         name = user.FirstName + " " + user.LastName;
         username = user.Username;
         email = user.email;
@@ -72,7 +102,8 @@ const Profile = () => {
         skills = user.SkillSet.match(/[A-Za-z]+/g);
         skill_grades = user.SkillGrade.match(/[0-9]+.[0-9]+/g);
 
-        // Preparation of chart values
+        // Preparation of Spyder Chart values: Skills & Skill grades
+        //  - Data   : Need of labels & Float grades (Color definition to match)
         var data = {
             labels: skills,
             datasets: [{
@@ -88,22 +119,30 @@ const Profile = () => {
             }]
         };
 
+        //  - Config : Definition of type of chart, Data predifined, and conections
         var config = {
             type: 'radar',
             data: data,
             options: { elements:{ line: {borderWidth: 2}} }
         };
 
+        //  - radarCanvas: Canvas ID definiton for Chart display
         var radarCanvas = document.getElementById("radarChart");
 
+        // Refresh behaviour -> If existent canvas and not fully rendered,
+        // Destroy of canvas and definition of new.
         if (radarChart) {
             radarChart.destroy();
         }
 
+        // Definition of chart with ID and configuration
         radarChart = new Chart(radarCanvas, config);
     };
 
-    // Response page for user
+    // Navegation Control
+    const navigate = useNavigate();
+
+    // Response of Page: User Front
     return (
 
         <div className='container'>

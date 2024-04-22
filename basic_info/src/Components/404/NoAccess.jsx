@@ -1,22 +1,37 @@
+/* 
+ ****************************************************************
+ * about  : No Access app
+ * file   : NoAccess.jsx
+ * author : @alujan
+ * **************************************************************
+ * @information  
+ * Test Login Application
+ * Small implementation of a Fullstack app, based on REACT, 
+ * FastAPI & SQLAlchemy
+ * 
+ * **************************************************************
+ */
+
+ // Import of main module REACT
 import React from 'react'
+
+// Import of Router for Front interconnections
+import { useNavigate } from 'react-router-dom'
 
 // Importing of CSS for No access
 import './NoAccess.css'
 
-import { useNavigate } from 'react-router-dom'
-
-
-// Import of Material UI components
+// Import of Material UI components used
 import IconButton from '@mui/material/IconButton';
-
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+// No Access: 404 redirection for missing Routes
 const NoAccess = () => {
 
-    // Navegation Control
+    // Navegation Control: Fast Redirection
     const navigate = useNavigate();
 
-    // Response page for user
+    // Response of Page: User Front
     return (
 
         <div className='container'>
