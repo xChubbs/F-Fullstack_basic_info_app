@@ -3,14 +3,14 @@ The following repository contains the implementation of a basic fullstack applic
 FastAPI and SQLAlchemy.
 
 ## About branching and context of the proyect
-Currently four branches exists: `main`, `front_develop`, `back_integration` and `Dockerization`. Resulting on the natural approach did to the proyect. All the information that can be found on each branc it's enlisted:
+Currently four branches exists: `main`, `front_develop`, `back_integration` and `Dockerization`. Resulting on the natural approach did to the proyect. All the information that can be found on each branch it's enlisted:
 - `main` : Final state of the application, here all the branches come together in a Fullstack perspective
 - `front_develop` : First task of creation of a React app, considering MUI components, complemented with CSS, JS and pure HTML for creation of cards containing all the information wanted 
 - `back_integration` : Second task of creation and preparing the React app for an integration of SQLite, using SQLAlchemy, FastAPI, uvcorn and pydantic.
-- `Dockerization` : Final task of deployment of application restructuring of proyect and final Docker of each end for final integration
+- `Dockerization` : Final task of deployment of application. Restructuring of proyect and final Docker of each end for final integration
 
 ### Running the application
-For running the application locally it's adviced that all the dependencies needed must be installed before running. You must have installed for the client end *(node:16-alpine)*:
+To locally it's adviced that all the dependencies needed must be installed before running. You must have installed for the client end *(node:16-alpine)*:
 ```
 dependencies: {
     "@emotion/react": "^11.11.4",
@@ -49,11 +49,11 @@ typing-extensions==4.11.0
 uvicorn==0.29.0
 ```
 
-Knowing the limitations for certain cases a dockerized version was prepared, if you are looking foward to build the image it's importat that you must have installed [Docker](https://www.docker.com) on your system *(I recommend usign Docker Desktop)*, And now to get the file needed you must run the following command to build the composition, this process must be done once, whenever the image it's already build it's no needed to rebuilded again if no changes are made, in a new terminal write:
+Knowing the limitations for certain cases, a dockerized version was prepared. If you are looking foward to build the image it's important that you must have installed [Docker](https://www.docker.com) on your system *(I recommend usign Docker Desktop)*, And now to get the file needed you must run the following command to build the composition, this process must be done once, whenever the image it's already build no futher rebuild it's needed if no changes are made, in a new terminal write:
 ````
 docker-compose up --build
 ````
-This command composes the two different directories with each Dockerfile created for the containers, this creates a multicontainer application that runs the containers simultaneously and let's the Front and Back communicate smoothly *(Like a complete local machine!)*, once the build it's done, the ending parameter `--build` it's no longer needeed. 
+This command composes the two different directories with each Dockerfile created for the containers, this creates a multicontainer application that runs the containers simultaneously and let the Front and Back communicate smoothly *(Like a complete local machine!)*. Once the build it's done, the ending parameter `--build` it's no longer needeed. 
 
 When the composition is run, the application it's going to be available on the port: 3000, this means that to see the app running you must connect to your [http://localhost:3000](http://localhost:3000/SignIn), also the backend handling can be seen on the port: [8000](http://localhost:8000/docs). To check an example of some dummy users integrated for testing the below you'll find the credentials:
 ````
@@ -63,6 +63,9 @@ When the composition is run, the application it's going to be available on the p
     {"username" : "prop_user", "password": "password"},
 ]
 ````
+And try to input your own!, the sign in form it's ready to post new entries. Just be careful with your entries because the app needs more further refinements and it's really sensitive with the information provided:
+- **username**/ **password**/ **First name**/ **Last name**/ **Current position**/ **Email** : Are inputs based on string with no support for special characters like accents: `á`, `ä`, `à`, ...
+- **Skill Set**/ **Skill Grades** : Are inputs based on string that are processed to then be enlisted, it's recomended to use commas to separate the values: *skill 1, skill 2, skill 3, ...*, and for the skill grades all the values input must be in a float format: *1.0, 2.8, 4.2, ...*
 
 ### Work Flow
 #### Public dev priorities
