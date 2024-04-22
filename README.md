@@ -55,7 +55,14 @@ docker-compose up --build
 ````
 This command composes the two different directories with each Dockerfile created for the containers, this creates a multicontainer application that runs the containers simultaneously and let's the Front and Back communicate smoothly *(Like a complete local machine!)*, once the build it's done, the ending parameter `--build` it's no longer needeed. 
 
-When the composition is run, the application it's going to be available on the port: 3000, this means that to see the app running you must connect to your [http://localhost:3000](http://localhost:3000/SignIn).
+When the composition is run, the application it's going to be available on the port: 3000, this means that to see the app running you must connect to your [http://localhost:3000](http://localhost:3000/SignIn), also the backend handling can be seen on the port: [8000](http://localhost:8000/docs). To check an example of some dummy users integrated for testing the below you'll find the credentials:
+````
+[
+    {"username" : "alujan", "password": "qweop123"},
+    {"username" : "test_user", "password": "password"},
+    {"username" : "prop_user", "password": "password"},
+]
+````
 
 ### Work Flow
 #### Public dev priorities
