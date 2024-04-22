@@ -1,17 +1,15 @@
-# pull official base image
-FROM node:18-alpine
+FROM node:16-alpine
 
-# set working directory
 WORKDIR /app
 
-COPY public/ /app/public
-COPY src/ /appe/src
-COPY package.json /app/
-COPY package-lock.json /app/
+COPY package.json .
+COPY package-lock.json .
 
-# add app
-COPY . /app/
-
-# start app
 RUN npm install
 
+COPY . .
+
+# required for docker desktop port mapping
+EXPOSE 3000
+
+CMD ["npm", "start"]
